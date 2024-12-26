@@ -3,11 +3,30 @@ import { RuleSetRule } from "webpack";
 import { BuildOptions } from "./types/config";
 
 export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
+
+  // если не используем ts нужен babel loader
   const typescriptLoaders = {
     test: /\.tsx?$/,
     use: "ts-loader",
     exclude: /node_modules/,
   };
+
+  const fileLoader = {
+    //если захочешь добавить шрифты то добавляем в регулярку
+    test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
+  }
+
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  }
+
+
   const cssLoaders = {
     test: /\.s[ac]ss$/i,
     use: [
@@ -28,5 +47,5 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
       "sass-loader",
     ],
   };
-  return [typescriptLoaders, cssLoaders];
+  return [fileLoader, svgLoader, typescriptLoaders, cssLoaders];
 };
