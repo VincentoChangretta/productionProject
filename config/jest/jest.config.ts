@@ -43,9 +43,9 @@ export default {
     'node_modules',
   ],
   testMatch: [
-    '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
-  ],
-  rootDir: '../../',
+    '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)', // регулярка которая находит файлы с тестами
+  ], 
+  rootDir: '../../', // путь от конфига к корню проекта
 
   // Indicates which provider should be used to instrument code for coverage
   // coverageProvider: "babel",
