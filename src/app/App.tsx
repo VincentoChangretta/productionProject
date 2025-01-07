@@ -10,7 +10,7 @@ import 'shared/config/i18n/i18n';
 export const App = () => {
   const { theme } = useTheme();
   return (
-      <div className={classNames('app', { hovered: true, selected: false }, [theme, 'cls2', '123'])}>
+      <div className={classNames('app', { hovered: true, selected: true }, [theme, 'cls2', '123'])}>
           <Suspense fallback="">
               <Navbar />
               <div className="content-page">
