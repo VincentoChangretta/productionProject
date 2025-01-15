@@ -1,6 +1,7 @@
 import { ResolveOptions } from 'webpack';
 import { BuildOptions } from './types/config';
 
+
 export const buildResolvers = (options: BuildOptions): ResolveOptions => ({
   extensions: ['.tsx', '.ts', '.js'],
   preferAbsolute: true, // абсолютные пути в приоритете 10/video-1
