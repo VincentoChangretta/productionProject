@@ -4,8 +4,10 @@
     box-sizing: border-box;
 }
 
+input,
 button,
-input {
-    font-size: inherit;
-    cursor: pointer;
+textarea,
+select {
+    margin: 0;
+    font: inherit;
 }
