@@ -25,7 +25,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
             ])}
         >
             <Button data-testid="sidebar-toggle" onClick={onToggle}>
-                {t('toggle')}
+                {t('toggle jan')}
             </Button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
