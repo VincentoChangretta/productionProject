@@ -17,9 +17,6 @@ function App() {
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <Navbar />
-                <button type="button" onClick={() => setIsOpen(true)}>
-                    {t('Toggle')}
-                </button>
                 <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
                 <div className="content-page">
                     <Sidebar />
