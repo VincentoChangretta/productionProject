@@ -19,10 +19,23 @@
     padding: 20px;
     border-radius: 20px;
     background: var(--bg-color);
+    transition: 0.3s transform;
+    transform: scale(0.3);
+    max-width: 60%;
 }
 
 .opened {
     opacity: 1;
     pointer-events: auto;
     z-index: var(--modal-z-index);
+    .content{
+        transform: scale(1);
+    }
+}
+
+
+.isClosing{
+    .content{
+        transform: scale(0.3);
+    }
 }
