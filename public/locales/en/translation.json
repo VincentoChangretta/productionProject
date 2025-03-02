@@ -10,5 +10,10 @@
   "throw error": "throw error",
   "Главная": "Main",
   "О сайте": "About us",
-  "Короткий язык": "EN"
+  "Короткий язык": "EN",
+  "Значение": "value",  
+  "Добавить": "increment",  
+  "Отнять": "decrement",
+  "increment": "Увеличить",
+  "decrement": "Уменшьить"
 }
