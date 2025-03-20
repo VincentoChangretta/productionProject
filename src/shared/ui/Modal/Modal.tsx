@@ -1,23 +1,27 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import React, {
-    FC, ReactNode, useCallback, useEffect, useRef, useState,
+    FC,
+    ReactNode,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
 } from 'react';
-import cls from './Modal.module.scss';
+import { useTheme } from 'app/providers/ThemeProvider';
 import { Portal } from '../Portal/Portal';
+import cls from './Modal.module.scss';
 
 interface ModalProps {
-  className?: string;
-  children?: ReactNode;
-  isOpen?: boolean;
-  onClose?: () => void;
+    className?: string;
+    children?: ReactNode;
+    isOpen?: boolean;
+    onClose?: () => void;
 }
 
 const ANIMATION_DELAY = 300;
 
-export const Modal: FC<ModalProps> = (props) => {
-    const {
-        children, className, isOpen, onClose,
-    } = props;
+export const Modal: FC<ModalProps> = props => {
+    const { children, className, isOpen, onClose } = props;
 
     const [isClosing, setIsClosing] = useState(false);
     const timeRef = useRef<ReturnType<typeof setTimeout>>();
@@ -41,11 +45,14 @@ export const Modal: FC<ModalProps> = (props) => {
         }
     }, [onClose]);
 
-    const onKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            closeHandler();
-        }
-    }, [closeHandler]);
+    const onKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                closeHandler();
+            }
+        },
+        [closeHandler],
+    );
 
     useEffect(() => {
         if (isOpen) {
