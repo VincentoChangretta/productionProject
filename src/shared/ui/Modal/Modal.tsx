@@ -7,7 +7,6 @@ import React, {
     useRef,
     useState,
 } from 'react';
-import { useTheme } from 'app/providers/ThemeProvider';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
 
@@ -16,15 +15,23 @@ interface ModalProps {
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    lazy?: boolean; // для ленивой загрузки
 }
 
 const ANIMATION_DELAY = 300;
 
 export const Modal: FC<ModalProps> = props => {
-    const { children, className, isOpen, onClose } = props;
+    const { children, className, isOpen, onClose, lazy } = props;
 
     const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMouted] = useState(false);
     const timeRef = useRef<ReturnType<typeof setTimeout>>();
+
+    useEffect(() => {
+        if (isOpen) {
+            setIsMouted(true);
+        }
+    }, [isOpen]);
 
     const mods: Record<string, boolean> = {
         [cls.opened]: isOpen,
@@ -65,6 +72,7 @@ export const Modal: FC<ModalProps> = props => {
     }, [isOpen, onKeyDown]);
 
     if (!isOpen) return null;
+    if (lazy && !isMounted) return null;
 
     return (
         <Portal>
