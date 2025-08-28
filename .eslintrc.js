@@ -66,7 +66,7 @@ module.exports = {
             'error',
             {
                 ignoreComments: true,
-                code: 100,
+                code: 130,
             },
         ],
         'react-hooks/rules-of-hooks': 'error',
@@ -81,7 +81,7 @@ module.exports = {
             files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 'off',
-                'max-len': 'off',
+               
             },
         },
     ],

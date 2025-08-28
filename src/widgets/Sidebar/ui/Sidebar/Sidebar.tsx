@@ -9,15 +9,17 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import AboutIcon from 'shared/assets/icons/about.svg';
 import MainIcon from 'shared/assets/icons/home.svg';
 import cls from './Sidebar.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface SidebarProps {
-  className?: string;
+    className?: string;
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
+    const { t } = useTranslation();
     const onToggle = () => {
-        setCollapsed((prev) => !prev);
+        setCollapsed(prev => !prev);
     };
 
     return (

@@ -1,7 +1,6 @@
 import React, {
     InputHTMLAttributes,
     memo,
-    SyntheticEvent,
     useEffect,
     useRef,
     useState,
@@ -34,7 +33,6 @@ export const Input = memo((props: InputProps) => {
 
     const ref = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState<boolean>(false);
-    const [caretPosition, setCaretPosition] = useState(0);
 
     useEffect(() => {
         if (autofocus) {
@@ -53,14 +51,8 @@ export const Input = memo((props: InputProps) => {
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
-        setCaretPosition(e.target.value.length);
     };
 
-    const onSelect = (e: SyntheticEvent<HTMLDivElement, Event>) => {
-        if (e.target instanceof HTMLInputElement) {
-            setCaretPosition(e?.target?.selectionStart || 0);
-        }
-    };
     return (
         <div className={classNames(cls.inputWrapper, {}, [className])}>
             {placeholder && (
@@ -75,15 +67,8 @@ export const Input = memo((props: InputProps) => {
                     onChange={onChangeHandler}
                     onFocus={onFocus}
                     onBlur={onBlur}
-                    onSelect={onSelect}
                     {...otherProps}
                 />
-                {isFocused && (
-                    <span
-                        className={cls.caret}
-                        style={{ left: `${caretPosition * 9}px` }}
-                    />
-                )}
             </div>
         </div>
     );
