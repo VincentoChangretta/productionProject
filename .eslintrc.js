@@ -35,7 +35,7 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'off',
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
-        indent: ['error', 4],
+        indent: 0,
         'react/jsx-filename-extension': [
             2,
             {
@@ -72,6 +72,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
+        'i18next/no-literal-string': 'warn',
     },
     globals: {
         __IS_DEV__: true,
@@ -81,7 +82,6 @@ module.exports = {
             files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 'off',
-               
             },
         },
     ],
